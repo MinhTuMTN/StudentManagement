@@ -20,6 +20,7 @@ namespace StudentManagement.DataAccessLayer.Models
         public string Nation { get; set; }
         public string Address { get; set; }
         public int YearOfAdmission { get; set; }
+        public float GPA { get; set; }
         public bool IsActive { get; set; }
 
 

@@ -46,5 +46,10 @@ namespace StudentManagement.PresentationLayer.TrainingDepartment
             StudentClassManagement studentClass = new StudentClassManagement();
             studentClass.Show();
         }
+
+        private void btnDKMH_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

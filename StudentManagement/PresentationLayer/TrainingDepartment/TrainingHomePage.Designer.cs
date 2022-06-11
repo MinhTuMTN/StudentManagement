@@ -34,6 +34,7 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnDKMH = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -113,11 +114,25 @@
             this.pictureBox1.TabIndex = 13;
             this.pictureBox1.TabStop = false;
             // 
+            // btnDKMH
+            // 
+            this.btnDKMH.BackgroundImage = global::StudentManagement.Properties.Resources.SubjectManagement;
+            this.btnDKMH.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnDKMH.Location = new System.Drawing.Point(558, 310);
+            this.btnDKMH.Name = "btnDKMH";
+            this.btnDKMH.Size = new System.Drawing.Size(230, 98);
+            this.btnDKMH.TabIndex = 14;
+            this.btnDKMH.Text = "Thông tin DKMH\r\nvà học phí của SV";
+            this.btnDKMH.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnDKMH.UseVisualStyleBackColor = true;
+            this.btnDKMH.Click += new System.EventHandler(this.btnDKMH_Click);
+            // 
             // TrainingHomePage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnDKMH);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
@@ -139,5 +154,6 @@
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button btnDKMH;
     }
 }

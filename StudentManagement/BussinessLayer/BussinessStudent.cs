@@ -162,161 +162,23 @@ namespace StudentManagement.BussinessLayer
             }
             return -1;
         }
-        public int AddSubject(string studentId, string subjectId, ref string error)
+        public int UpdateGPA(string studentId, ref string error)
         {
             try
             {
                 using (var context = new Context())
                 {
-                    Student student = context.Students.Find(studentId);
-                    if (student != null)
-                    {
-                        Subject subject = context.Subjects.Find(subjectId);
+                    var student = context.Students.Where(s => s.StudentId == studentId).FirstOrDefault();
+                    float GPA = GetGPA(studentId, ref error);
+                    student.GPA = GPA;
 
-                        if (subject != null)
-                        {
-                            try
-                            {
-                                var studentSubject = new StudentSubject()
-                                {
-                                    Student = student,
-                                    Subject = subject,
-                                    IsPaid = false
-                                };
-                                context.StudentSubjects.Add(studentSubject);
-                                int result = context.SaveChanges();
-                                return result;
-                            }
-                            catch (Exception ex)
-                            {
-                                error = ex.Message;
-                                return -1;
-                            }
-                        }
-                        else
-                        {
-                            error = "Không tồn tại môn học này";
-                            return -1;
-                        }
-                    }
-                    else
-                    {
-                        error = "Không tồn tại sinh viên này";
-                        return -1;
-                    }
+                    context.Entry(student).State = System.Data.Entity.EntityState.Modified;
+                    return context.SaveChanges();
                 }
             }
-            catch (Exception ex)
+            catch(Exception ex)
             {
                 error = ex.Message;
-            }
-            return -1;
-        }
-        public int RemoveSubject(string studentId, string subjectId, ref string error)
-        {
-            try
-            {
-                using (var context = new Context())
-                {
-                    var studentSubject = context.StudentSubjects.Where(ss => ss.StudentId == studentId && ss.SubjectId == subjectId).SingleOrDefault();
-
-                    if (studentSubject != null)
-                    {
-                        context.StudentSubjects.Remove(studentSubject);
-                        return context.SaveChanges();
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                error = ex.Message;
-            }
-            return -1;
-        }
-        public int UpdateScoreGK(string studentId, string subjectId, float diemGK, ref string error)
-        {
-            try
-            {
-                using (var context = new Context())
-                {
-                    var studentSubject = context.StudentSubjects.Where(ss => ss.StudentId == studentId && ss.SubjectId == subjectId).SingleOrDefault();
-
-                    if (studentSubject != null)
-                    {
-                        studentSubject.DiemGK = diemGK;
-                        context.StudentSubjects.AddOrUpdate(studentSubject);
-                        return context.SaveChanges();
-                    }
-                }
-            }
-            catch (DbEntityValidationException ex)
-            {
-                foreach (var errors in ex.EntityValidationErrors)
-                {
-                    foreach (var validationError in errors.ValidationErrors)
-                    {
-                        // get the error message 
-                       error = validationError.ErrorMessage;
-                    }
-                }
-            }
-            return -1;
-        }
-        public int UpdateScoreCK(string studentId, string subjectId, float diemCK, ref string error)
-        {
-            try
-            {
-                using (var context = new Context())
-                {
-                    var studentSubject = context.StudentSubjects.Where(ss => ss.StudentId == studentId && ss.SubjectId == subjectId).SingleOrDefault();
-
-                    if (studentSubject != null)
-                    {
-                        studentSubject.DiemCK = diemCK;
-
-                        return context.SaveChanges();
-                    }
-                }
-            }
-            catch (DbEntityValidationException ex)
-            {
-                foreach (var errors in ex.EntityValidationErrors)
-                {
-                    foreach (var validationError in errors.ValidationErrors)
-                    {
-                        // get the error message 
-                        error = validationError.ErrorMessage;
-                    }
-                }
-            }
-            return -1;
-        }
-        public int UpdateScore(string studentId, string subjectId, float diemGK, float diemCK, ref string error)
-        {
-            try
-            {
-                using (var context = new Context())
-                {
-                    var studentSubject = context.StudentSubjects.Where(ss => ss.StudentId == studentId && ss.SubjectId == subjectId).SingleOrDefault();
-
-                    if (studentSubject != null)
-                    {
-                        studentSubject.DiemCK = diemCK;
-                        studentSubject.DiemGK = diemGK;
-                        return context.SaveChanges();
-                    }
-                }   
-            }
-            catch (DbEntityValidationException ex)
-            {
-                foreach (var errors in ex.EntityValidationErrors)
-                {
-                    foreach (var validationError in errors.ValidationErrors)
-                    {
-                        // get the error message 
-                        error = validationError.ErrorMessage;
-                    }
-                }
             }
             return -1;
         }
@@ -330,6 +192,9 @@ namespace StudentManagement.BussinessLayer
                 {
                     var student = context.Students.Find(studentId);
 
+                    if(student.StudentSubjects.Count == 0)
+                        return 0;
+
                     foreach (StudentSubject studentSubject in student.StudentSubjects)
                     {
                         float diemTK = (studentSubject.DiemCK + studentSubject.DiemGK) / 2;
@@ -341,7 +206,7 @@ namespace StudentManagement.BussinessLayer
                     return tongDiem / tongSoTC;
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 error = ex.Message;
             }

@@ -28,3 +28,4 @@ D:\HCMUTE\Year2\HK2\WindowsProgramming\CuoiKy\StudentManagement\StudentManagemen
 D:\HCMUTE\Year2\HK2\WindowsProgramming\CuoiKy\StudentManagement\StudentManagement\obj\Debug\StudentManagement.PresentationLayer.TrainingDepartment.SubjectManagement.resources
 D:\HCMUTE\Year2\HK2\WindowsProgramming\CuoiKy\StudentManagement\StudentManagement\obj\Debug\StudentManagement.PresentationLayer.TrainingDepartment.UpdateSubject.resources
 D:\HCMUTE\Year2\HK2\WindowsProgramming\CuoiKy\StudentManagement\StudentManagement\obj\Debug\StudentManagement.PresentationLayer.TrainingDepartment.DeleteSubject.resources
+D:\HCMUTE\Year2\HK2\WindowsProgramming\CuoiKy\StudentManagement\StudentManagement\obj\Debug\StudentManagement.PresentationLayer.TrainingDepartment.CourseRegistrationManagement.resources
