@@ -180,7 +180,8 @@ namespace StudentManagement.BussinessLayer
                                 var studentSubject = new StudentSubject()
                                 {
                                     Student = student,
-                                    Subject = subject
+                                    Subject = subject,
+                                    IsPaid = false
                                 };
                                 context.StudentSubjects.Add(studentSubject);
                                 int result = context.SaveChanges();
@@ -319,6 +320,78 @@ namespace StudentManagement.BussinessLayer
             }
             return -1;
         }
+        public float GetGPA(string studentId, ref string error)
+        {
+            float tongDiem = 0;
+            int tongSoTC = 0;
+            try
+            {
+                using (var context = new Context())
+                {
+                    var student = context.Students.Find(studentId);
 
+                    foreach (StudentSubject studentSubject in student.StudentSubjects)
+                    {
+                        float diemTK = (studentSubject.DiemCK + studentSubject.DiemGK) / 2;
+                        int soTC = studentSubject.Subject.NumberOfCredits;
+                        tongSoTC += soTC;
+                        tongDiem += diemTK * soTC;
+                    }
+
+                    return tongDiem / tongSoTC;
+                }
+            }
+            catch(Exception ex)
+            {
+                error = ex.Message;
+            }
+            return -1;
+        }
+        public float GetTuition(string studentId, ref string error)
+        {
+            try
+            {
+                float amountPerCredit = 520000;
+                int numberOfCredits = 0;
+                using(var context = new Context())
+                {
+                    var student = context.Students.Find(studentId);
+
+                    foreach(StudentSubject studentSubject in student.StudentSubjects)
+                        if (!studentSubject.IsPaid)
+                            numberOfCredits += studentSubject.Subject.NumberOfCredits;
+
+                    return numberOfCredits * amountPerCredit;
+                }
+            }
+            catch (Exception ex)
+            {
+                error = ex.Message;
+            }
+            return -1;
+        }
+        public int TuitionPayment(string studentId, string subjectId, ref string error)
+        {
+            try
+            {
+                using (var context = new Context())
+                {
+                    var studentSubject = context.StudentSubjects.Where(ss => ss.StudentId == studentId && ss.SubjectId == subjectId).SingleOrDefault();
+
+                    if (studentSubject != null)
+                    {
+                        studentSubject.IsPaid = true;
+                        return context.SaveChanges();
+                    }
+                    else
+                        error = "Không tìm thấy môn học hoặc sinh viên này";
+                }
+            }
+            catch(Exception ex)
+            {
+                error = ex.Message;
+            }
+            return -1;
+        }
     }
 }

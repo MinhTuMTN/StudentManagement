@@ -26,6 +26,7 @@ namespace StudentManagement
             Application.Run(new TrainingHomePage());
             */
             BussinessStudent bussinessStudent = new BussinessStudent();
+            BussinessSubject bussinessSubject = new BussinessSubject();
             string error = "";
             using(var context = new Context())
             {
@@ -33,7 +34,13 @@ namespace StudentManagement
                 var student = context.Students.Find("20110748");
 
                 //bussinessStudent.AddSubject("20110748", "MATH01", ref error);
-                int result = bussinessStudent.UpdateScoreGK("20110748","MATH01", 10.5f, ref error);
+                
+                //bussinessSubject.InsertSubject("MATH02","Toán 2", 2, "GV001", ref error);
+                //bussinessStudent.AddSubject("20110748", "MATH02", ref error);
+                //bussinessStudent.UpdateScore("20110748", "MATH01", 10, 9f, ref error);
+                bussinessStudent.TuitionPayment("20110748", "MATH01", ref error);
+                float result = bussinessStudent.GetGPA("20110748", ref error);
+                float tution = bussinessStudent.GetTuition("20110748", ref error);
             }
 
         }

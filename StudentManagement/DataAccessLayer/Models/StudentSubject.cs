@@ -19,6 +19,8 @@ namespace StudentManagement.DataAccessLayer.Models
         public float DiemGK { get; set; }
         [Range(typeof(float), "0", "10", ErrorMessage = "Điểm không hợp lệ")]
         public float DiemCK { get; set; }
+        public bool Result { get; set; }
+        public bool IsPaid { get; set; }
 
         public virtual Student Student { get; set; }
         public virtual Subject Subject { get; set; }
