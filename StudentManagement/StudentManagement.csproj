@@ -1,0 +1,302 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{8FE60D4F-AD2D-4658-B998-AD6C8188EA8A}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>StudentManagement</RootNamespace>
+    <AssemblyName>StudentManagement</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BussinessLayer\BussinessFaculty.cs" />
+    <Compile Include="BussinessLayer\BussinessStudent.cs" />
+    <Compile Include="BussinessLayer\BussinessStudentClass.cs" />
+    <Compile Include="BussinessLayer\BussinessSubject.cs" />
+    <Compile Include="BussinessLayer\BussinessTeacher.cs" />
+    <Compile Include="DataAccessLayer\Context.cs" />
+    <Compile Include="DataAccessLayer\Initializer.cs" />
+    <Compile Include="DataAccessLayer\Maps\FacultyMap.cs" />
+    <Compile Include="DataAccessLayer\Maps\StudentClassMap.cs" />
+    <Compile Include="DataAccessLayer\Maps\StudentMap.cs" />
+    <Compile Include="DataAccessLayer\Maps\StudentSubjectsMap.cs" />
+    <Compile Include="DataAccessLayer\Maps\SubjectMap.cs" />
+    <Compile Include="DataAccessLayer\Maps\TeacherMap.cs" />
+    <Compile Include="DataAccessLayer\Models\Faculty.cs" />
+    <Compile Include="DataAccessLayer\Models\StudentSubject.cs" />
+    <Compile Include="DataAccessLayer\Models\Student.cs" />
+    <Compile Include="DataAccessLayer\Models\StudentClass.cs" />
+    <Compile Include="DataAccessLayer\Models\Subject.cs" />
+    <Compile Include="DataAccessLayer\Models\Teacher.cs" />
+    <Compile Include="PresentationLayer\TrainingDepartment\AddStudent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PresentationLayer\TrainingDepartment\AddStudent.Designer.cs">
+      <DependentUpon>AddStudent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PresentationLayer\TrainingDepartment\AddSubject.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PresentationLayer\TrainingDepartment\AddSubject.Designer.cs">
+      <DependentUpon>AddSubject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PresentationLayer\TrainingDepartment\AddTeacher.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PresentationLayer\TrainingDepartment\AddTeacher.Designer.cs">
+      <DependentUpon>AddTeacher.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PresentationLayer\TrainingDepartment\DeleteStudent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PresentationLayer\TrainingDepartment\DeleteStudent.Designer.cs">
+      <DependentUpon>DeleteStudent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PresentationLayer\TrainingDepartment\DeleteSubject.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PresentationLayer\TrainingDepartment\DeleteSubject.Designer.cs">
+      <DependentUpon>DeleteSubject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PresentationLayer\TrainingDepartment\DeleteTeacher.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PresentationLayer\TrainingDepartment\DeleteTeacher.Designer.cs">
+      <DependentUpon>DeleteTeacher.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PresentationLayer\TrainingDepartment\FacultyManagement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PresentationLayer\TrainingDepartment\FacultyManagement.Designer.cs">
+      <DependentUpon>FacultyManagement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PresentationLayer\TrainingDepartment\StudentClassManagement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PresentationLayer\TrainingDepartment\StudentClassManagement.Designer.cs">
+      <DependentUpon>StudentClassManagement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PresentationLayer\TrainingDepartment\FStudentManagement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PresentationLayer\TrainingDepartment\FStudentManagement.Designer.cs">
+      <DependentUpon>FStudentManagement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PresentationLayer\TrainingDepartment\SubjectManagement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PresentationLayer\TrainingDepartment\SubjectManagement.Designer.cs">
+      <DependentUpon>SubjectManagement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PresentationLayer\TrainingDepartment\TeacherManagement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PresentationLayer\TrainingDepartment\TeacherManagement.Designer.cs">
+      <DependentUpon>TeacherManagement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PresentationLayer\TrainingDepartment\TrainingHomePage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PresentationLayer\TrainingDepartment\TrainingHomePage.Designer.cs">
+      <DependentUpon>TrainingHomePage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PresentationLayer\TrainingDepartment\UpdateStudent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PresentationLayer\TrainingDepartment\UpdateStudent.Designer.cs">
+      <DependentUpon>UpdateStudent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PresentationLayer\TrainingDepartment\UpdateSubject.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PresentationLayer\TrainingDepartment\UpdateSubject.Designer.cs">
+      <DependentUpon>UpdateSubject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PresentationLayer\TrainingDepartment\UpdateTeacher.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PresentationLayer\TrainingDepartment\UpdateTeacher.Designer.cs">
+      <DependentUpon>UpdateTeacher.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="PresentationLayer\TrainingDepartment\AddStudent.resx">
+      <DependentUpon>AddStudent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PresentationLayer\TrainingDepartment\AddSubject.resx">
+      <DependentUpon>AddSubject.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PresentationLayer\TrainingDepartment\AddTeacher.resx">
+      <DependentUpon>AddTeacher.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PresentationLayer\TrainingDepartment\DeleteStudent.resx">
+      <DependentUpon>DeleteStudent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PresentationLayer\TrainingDepartment\DeleteSubject.resx">
+      <DependentUpon>DeleteSubject.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PresentationLayer\TrainingDepartment\DeleteTeacher.resx">
+      <DependentUpon>DeleteTeacher.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PresentationLayer\TrainingDepartment\FacultyManagement.resx">
+      <DependentUpon>FacultyManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PresentationLayer\TrainingDepartment\StudentClassManagement.resx">
+      <DependentUpon>StudentClassManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PresentationLayer\TrainingDepartment\FStudentManagement.resx">
+      <DependentUpon>FStudentManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PresentationLayer\TrainingDepartment\SubjectManagement.resx">
+      <DependentUpon>SubjectManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PresentationLayer\TrainingDepartment\TeacherManagement.resx">
+      <DependentUpon>TeacherManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PresentationLayer\TrainingDepartment\TrainingHomePage.resx">
+      <DependentUpon>TrainingHomePage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PresentationLayer\TrainingDepartment\UpdateStudent.resx">
+      <DependentUpon>UpdateStudent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PresentationLayer\TrainingDepartment\UpdateSubject.resx">
+      <DependentUpon>UpdateSubject.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PresentationLayer\TrainingDepartment\UpdateTeacher.resx">
+      <DependentUpon>UpdateTeacher.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\shudhangshu-malakar-education-school-logo.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AddStudentIcon.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\UpdateStudent.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DeleteStudent.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AddTeacher.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DeleteTeacher.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\UpdateTeacher.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AddTeacher1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DeleteTeacher1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\UpdateTeacher1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AddSubject.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DeleteSubject.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\UpdateSubject.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\StudentManagement.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SubjectManagement.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TeacherManagement.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Classroom.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Faculty.jpg" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+</Project>
