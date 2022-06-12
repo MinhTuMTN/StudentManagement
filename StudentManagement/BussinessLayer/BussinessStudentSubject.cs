@@ -28,22 +28,42 @@ namespace StudentManagement.BussinessLayer
             column2.DataType = typeof(string);
             dataTable.Columns.Add(column2);
 
+            DataColumn column3 = new DataColumn();
+            column3.ColumnName = "DiemGK";
+            column3.DataType = typeof(float);
+            dataTable.Columns.Add(column3);
+
+            DataColumn column4 = new DataColumn();
+            column4.ColumnName = "DiemCK";
+            column4.DataType = typeof(float);
+            dataTable.Columns.Add(column4);
+
+            DataColumn column5 = new DataColumn();
+            column5.ColumnName = "DiemTK";
+            column5.DataType = typeof(float);
+            dataTable.Columns.Add(column5);
+
+            DataColumn column6 = new DataColumn();
+            column6.ColumnName = "KQ";
+            column6.DataType = typeof(string);
+            dataTable.Columns.Add(column6);
+
             using (var context = new Context())
             {
                 var subjectsOfStudent = (from studentSubject in context.StudentSubjects
                                          where studentSubject.StudentId == studentId
-                                         select studentSubject.Subject).ToList();
-                var allSubject = from subject in context.Subjects
-                                 select subject;
-
-                foreach (var subject in allSubject)
+                                         select studentSubject).ToList();
+                
+                foreach (var studentSubject in subjectsOfStudent)
                 {
-                    if (!subjectsOfStudent.Contains(subject))
-                        continue;
-                    DataRow dataRow = dataTable.NewRow();
-                    dataRow[0] = subject.SubjectId;
-                    dataRow[1] = subject.SubjectName;
-                    dataTable.Rows.Add(dataRow);
+                    DataRow row = dataTable.NewRow();
+                    row[0] = studentSubject.SubjectId;
+                    row[1] = studentSubject.Subject.SubjectName;
+                    row[2] = studentSubject.DiemGK;
+                    row[3] = studentSubject.DiemCK;
+                    row[4] = (studentSubject.DiemGK + studentSubject.DiemCK)/2;
+                    row[5] = studentSubject.Result ? "Đậu" : "Rớt";
+                    dataTable.Rows.Add(row);
                 }
             }
 
@@ -207,6 +227,30 @@ namespace StudentManagement.BussinessLayer
             }
             return -1;
         }
+        private void UpdateResult(string studentId, string subjectId, ref string error)
+        {
+            try
+            {
+                using (var context = new Context())
+                {
+                    StudentSubject studentSubject = (from s in context.StudentSubjects
+                                                     where s.StudentId == studentId && s.SubjectId == subjectId
+                                                     select s).FirstOrDefault();
+                    float diemTK = (studentSubject.DiemCK + studentSubject.DiemGK) / 2;
+
+                    if (diemTK >= 5 && studentSubject.DiemCK >= 3)
+                        studentSubject.Result = true;
+                    else
+                        studentSubject.Result = false;
+
+                    context.SaveChanges();
+                }
+            }
+            catch(Exception ex)
+            {
+                error = ex.Message;
+            }
+        }
         public int UpdateScoreGK(string studentId, string subjectId, float diemGK, ref string error)
         {
             try
@@ -221,6 +265,7 @@ namespace StudentManagement.BussinessLayer
                         context.StudentSubjects.AddOrUpdate(studentSubject);
                         int result = context.SaveChanges();
                         bussinessStudent.UpdateGPA(studentId, ref error);
+                        UpdateResult(studentId, subjectId, ref error);
                         return result;
                     }
                 }
@@ -247,6 +292,7 @@ namespace StudentManagement.BussinessLayer
                         context.StudentSubjects.AddOrUpdate(studentSubject);
                         int result = context.SaveChanges();
                         bussinessStudent.UpdateGPA(studentId, ref error);
+                        UpdateResult(studentId, subjectId, ref error);
                         return result;
                     }
                 }
@@ -274,6 +320,7 @@ namespace StudentManagement.BussinessLayer
                         context.StudentSubjects.AddOrUpdate(studentSubject);
                         int result = context.SaveChanges();
                         bussinessStudent.UpdateGPA(studentId, ref error);
+                        UpdateResult(studentId, subjectId, ref error);
                         return result;
                     }
                 }

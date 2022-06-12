@@ -23,7 +23,7 @@ namespace StudentManagement
             
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new CourseRegistrationManagement());
+            Application.Run(new TrainingHomePage());
             /*
             BussinessStudent bussinessStudent = new BussinessStudent();
             BussinessSubject bussinessSubject = new BussinessSubject();

@@ -15,40 +15,43 @@ namespace StudentManagement.PresentationLayer.TrainingDepartment
 {
     public partial class CourseRegistrationManagement : Form
     {
+        private string studentId;
         public CourseRegistrationManagement()
         {
             InitializeComponent();
         }
 
-        private void btnSearch_Click(object sender, EventArgs e)
-        {
-            lblDaThanhToan.Visible = false;
+        private void LoadData()
+        {            
             dgvMonHocChuaThanhToan.DataSource = null;
-            lblTongSoTinChi.Text = "";
-            lblTongSoTinChiDau.Text = "";
-            lblTongSoTinChiRot.Text = "";
-            lblTongSoTinChiChuaThanhToan.Text = "";
-            lblTongSoTien.Text = "";
-            lblSearchResult.ResetText(); 
+            dgvMonHocDaDK.DataSource = null;
+            cbXoaMH.DataSource = null;
+            cbThemMH.DataSource = null;
+
+            lblDaThanhToan.Visible = false;
+
+            lblDiemTB.ResetText();
+            lblTongSoTinChi.ResetText();
+            lblTongSoTinChiDau.ResetText();
+            lblTongSoTinChiRot.ResetText();
+            lblTongSoTinChiChuaThanhToan.ResetText();
+            lblTongSoTien.ResetText();
+            lblSearchResult.ResetText();
+            lblHoTen.ResetText();
+            lblKhoa.ResetText();
+            lblMSSV.ResetText();
 
             string error = "";
-            string studentId = txtMSSVSearch.Text;
+
             try
             {
+                int tongSoTinChi = 0;
+                int tongSoTinChiDau = 0;
+                int tongSoTinChiChuaThanhToan = 0;
+                float hocPhi = 0;
                 using (var context = new Context())
                 {
-                    var student = context.Students.Find(studentId);
-                    if (student == null)
-                    {
-                        lblSearchResult.Text = "Không tìm thấy sinh viên này";
-                        return;
-                    }
-
-                    int tongSoTinChi = 0;
-                    int tongSoTinChiDau = 0;
-                    int tongSoTinChiChuaThanhToan = 0;
-                    float hocPhi = 0;
-
+                    var student = context.Students.Find(studentId); 
                     foreach (StudentSubject studentSubject in student.StudentSubjects)
                     {
                         tongSoTinChi += studentSubject.Subject.NumberOfCredits;
@@ -65,6 +68,10 @@ namespace StudentManagement.PresentationLayer.TrainingDepartment
                     lblTongSoTinChiRot.Text = (tongSoTinChi - tongSoTinChiDau).ToString();
                     lblTongSoTinChiChuaThanhToan.Text = tongSoTinChiChuaThanhToan.ToString();
                     lblTongSoTien.Text = hocPhi.ToString();
+                    lblMSSV.Text = student.StudentId;
+                    lblHoTen.Text = student.Name;
+                    lblKhoa.Text = student.Faculty.FacultyName;
+                    lblDiemTB.Text = student.GPA.ToString();
 
                     BussinessStudentSubject bussinessStudentSubject = new BussinessStudentSubject();
 
@@ -78,8 +85,46 @@ namespace StudentManagement.PresentationLayer.TrainingDepartment
                         lblDaThanhToan.Visible = true;
 
                     DataTable dataTable1 = bussinessStudentSubject.GetRegistedCourse(studentId, ref error);
-                    if(dataTable1.Rows.Count > 0)
+                    if (dataTable1.Rows.Count > 0)
+                    {
                         dgvMonHocDaDK.DataSource = dataTable1;
+                        cbXoaMH.DataSource = dataTable1;
+                        cbXoaMH.DisplayMember = "TenMH";
+                        cbXoaMH.ValueMember = "MaMH";
+                    }
+
+                    DataTable dataTable2 = bussinessStudentSubject.GetUnregistedCourse(studentId, ref error);
+                    if(dataTable2.Rows.Count > 0)
+                    {
+                        cbThemMH.DataSource = dataTable2;
+                        cbThemMH.DisplayMember = "TenMH";
+                        cbThemMH.ValueMember = "MaMH";
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            string studentId = txtMSSVSearch.Text;
+            try
+            {
+                using (var context = new Context())
+                {
+                    var student = context.Students.Find(studentId);
+                    if (student == null)
+                    {
+                        lblSearchResult.Text = "Không tìm thấy sinh viên này";
+                        return;
+                    }
+
+                    this.studentId = studentId.Trim();
+
+                    LoadData();
                 }
             }
             catch (Exception ex)
@@ -91,6 +136,67 @@ namespace StudentManagement.PresentationLayer.TrainingDepartment
         private void CourseRegistrationManagement_Load(object sender, EventArgs e)
         {
             lblDaThanhToan.Visible = false;
+        }
+
+        private void btnXoaMH_Click(object sender, EventArgs e)
+        {
+            string tenMH = cbXoaMH.Text;
+            DialogResult result = MessageBox.Show(string.Format("Bạn có chắc muốn xóa môn học {0} của sinh viên {1} không?",tenMH,studentId),"Xóa môn học", MessageBoxButtons.OKCancel,MessageBoxIcon.Warning);
+
+            if (result == DialogResult.Cancel)
+                return;
+
+            string error = "";
+            try
+            {
+                BussinessStudentSubject bussinessStudentSubject = new BussinessStudentSubject();
+                bussinessStudentSubject.RemoveSubject(studentId, cbXoaMH.SelectedValue.ToString().Trim(), ref error);
+                LoadData();
+            }
+            catch
+            {
+                MessageBox.Show(error);
+            }
+        }
+
+        private void btnThem_Click(object sender, EventArgs e)
+        {
+            string error = "";
+            try
+            {
+                BussinessStudentSubject bussinessStudentSubject = new BussinessStudentSubject();
+                bussinessStudentSubject.AddSubject(studentId, cbThemMH.SelectedValue.ToString().Trim(), ref error);
+                LoadData();
+            }
+            catch
+            {
+                MessageBox.Show(error);
+            }
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            LoadData();
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            string error = "";
+            BussinessStudentSubject bussiness = new BussinessStudentSubject();
+            foreach(DataGridViewRow data in dgvMonHocDaDK.Rows)
+            {
+                bussiness.UpdateScore(studentId,data.Cells[0].Value.ToString(), 
+                    float.Parse(data.Cells[2].Value.ToString()), 
+                    float.Parse(data.Cells[3].Value.ToString()), 
+                    ref error);
+            }
+            LoadData();
+        }
+
+        private void CourseRegistrationManagement_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Enter)
+                btnSearch_Click(sender, e);
         }
     }
 }

@@ -49,7 +49,8 @@ namespace StudentManagement.PresentationLayer.TrainingDepartment
 
         private void btnDKMH_Click(object sender, EventArgs e)
         {
-
+            CourseRegistrationManagement course = new CourseRegistrationManagement();
+            course.Show();
         }
     }
 }
