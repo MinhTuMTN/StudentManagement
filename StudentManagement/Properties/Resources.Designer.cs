@@ -143,6 +143,26 @@ namespace StudentManagement.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_tuition_64 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-tuition-64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_tuition_641 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-tuition-641", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap shudhangshu_malakar_education_school_logo {
             get {
                 object obj = ResourceManager.GetObject("shudhangshu_malakar_education_school_logo", resourceCulture);

@@ -22,6 +22,7 @@ namespace StudentManagement.DataAccessLayer
         public DbSet<Subject> Subjects { get; set; }
         public DbSet<Teacher> Teachers { get; set; }
         public DbSet<StudentSubject> StudentSubjects { get; set; }
+        public DbSet<UserLogin> UserLogins { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Configurations.Add(new StudentMap());

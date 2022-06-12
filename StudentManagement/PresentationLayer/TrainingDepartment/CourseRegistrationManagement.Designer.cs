@@ -53,12 +53,6 @@
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnRefresh = new System.Windows.Forms.Button();
             this.dgvMonHocDaDK = new System.Windows.Forms.DataGridView();
-            this.MaMH1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TenMH1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DiemGK = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DiemCK = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DiemTK = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.KQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.btnThem = new System.Windows.Forms.Button();
             this.cbThemMH = new System.Windows.Forms.ComboBox();
@@ -76,6 +70,12 @@
             this.label9 = new System.Windows.Forms.Label();
             this.lblDiemTB = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.MaMH1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TenMH1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DiemGK = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DiemCK = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DiemTK = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.KQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMonHocChuaThanhToan)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -342,55 +342,6 @@
             this.dgvMonHocDaDK.Size = new System.Drawing.Size(742, 191);
             this.dgvMonHocDaDK.TabIndex = 0;
             // 
-            // MaMH1
-            // 
-            this.MaMH1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.MaMH1.DataPropertyName = "MaMH";
-            this.MaMH1.HeaderText = "Mã môn học";
-            this.MaMH1.MinimumWidth = 6;
-            this.MaMH1.Name = "MaMH1";
-            this.MaMH1.Width = 130;
-            // 
-            // TenMH1
-            // 
-            this.TenMH1.DataPropertyName = "TenMH";
-            this.TenMH1.HeaderText = "Tên môn học";
-            this.TenMH1.MinimumWidth = 6;
-            this.TenMH1.Name = "TenMH1";
-            this.TenMH1.Width = 135;
-            // 
-            // DiemGK
-            // 
-            this.DiemGK.DataPropertyName = "DiemGK";
-            this.DiemGK.HeaderText = "Điểm GK";
-            this.DiemGK.MinimumWidth = 6;
-            this.DiemGK.Name = "DiemGK";
-            this.DiemGK.Width = 106;
-            // 
-            // DiemCK
-            // 
-            this.DiemCK.DataPropertyName = "DiemCK";
-            this.DiemCK.HeaderText = "Điểm CK";
-            this.DiemCK.MinimumWidth = 6;
-            this.DiemCK.Name = "DiemCK";
-            this.DiemCK.Width = 105;
-            // 
-            // DiemTK
-            // 
-            this.DiemTK.DataPropertyName = "DiemTK";
-            this.DiemTK.HeaderText = "Điểm TK";
-            this.DiemTK.MinimumWidth = 6;
-            this.DiemTK.Name = "DiemTK";
-            this.DiemTK.Width = 103;
-            // 
-            // KQ
-            // 
-            this.KQ.DataPropertyName = "KQ";
-            this.KQ.HeaderText = "Kết quả";
-            this.KQ.MinimumWidth = 6;
-            this.KQ.Name = "KQ";
-            this.KQ.Width = 95;
-            // 
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.btnThem);
@@ -548,6 +499,59 @@
             this.pictureBox1.TabIndex = 25;
             this.pictureBox1.TabStop = false;
             // 
+            // MaMH1
+            // 
+            this.MaMH1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.MaMH1.DataPropertyName = "MaMH";
+            this.MaMH1.HeaderText = "Mã môn học";
+            this.MaMH1.MinimumWidth = 6;
+            this.MaMH1.Name = "MaMH1";
+            this.MaMH1.ReadOnly = true;
+            this.MaMH1.Width = 130;
+            // 
+            // TenMH1
+            // 
+            this.TenMH1.DataPropertyName = "TenMH";
+            this.TenMH1.HeaderText = "Tên môn học";
+            this.TenMH1.MinimumWidth = 6;
+            this.TenMH1.Name = "TenMH1";
+            this.TenMH1.ReadOnly = true;
+            this.TenMH1.Width = 135;
+            // 
+            // DiemGK
+            // 
+            this.DiemGK.DataPropertyName = "DiemGK";
+            this.DiemGK.HeaderText = "Điểm GK";
+            this.DiemGK.MinimumWidth = 6;
+            this.DiemGK.Name = "DiemGK";
+            this.DiemGK.Width = 106;
+            // 
+            // DiemCK
+            // 
+            this.DiemCK.DataPropertyName = "DiemCK";
+            this.DiemCK.HeaderText = "Điểm CK";
+            this.DiemCK.MinimumWidth = 6;
+            this.DiemCK.Name = "DiemCK";
+            this.DiemCK.Width = 105;
+            // 
+            // DiemTK
+            // 
+            this.DiemTK.DataPropertyName = "DiemTK";
+            this.DiemTK.HeaderText = "Điểm TK";
+            this.DiemTK.MinimumWidth = 6;
+            this.DiemTK.Name = "DiemTK";
+            this.DiemTK.ReadOnly = true;
+            this.DiemTK.Width = 103;
+            // 
+            // KQ
+            // 
+            this.KQ.DataPropertyName = "KQ";
+            this.KQ.HeaderText = "Kết quả";
+            this.KQ.MinimumWidth = 6;
+            this.KQ.Name = "KQ";
+            this.KQ.ReadOnly = true;
+            this.KQ.Width = 95;
+            // 
             // CourseRegistrationManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
@@ -635,12 +639,6 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MaMH1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TenMH1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DiemGK;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DiemCK;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DiemTK;
-        private System.Windows.Forms.DataGridViewTextBoxColumn KQ;
         private System.Windows.Forms.ComboBox cbXoaMH;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button btnXoaMH;
@@ -652,5 +650,11 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label lblDiemTB;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MaMH1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TenMH1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DiemGK;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DiemCK;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DiemTK;
+        private System.Windows.Forms.DataGridViewTextBoxColumn KQ;
     }
 }

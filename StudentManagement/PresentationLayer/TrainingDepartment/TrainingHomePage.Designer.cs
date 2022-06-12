@@ -28,15 +28,39 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.btnDKMH = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.btnDKMH = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
+            // 
+            // btnDKMH
+            // 
+            this.btnDKMH.BackgroundImage = global::StudentManagement.Properties.Resources.icons8_tuition_641;
+            this.btnDKMH.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnDKMH.Location = new System.Drawing.Point(558, 310);
+            this.btnDKMH.Name = "btnDKMH";
+            this.btnDKMH.Size = new System.Drawing.Size(230, 98);
+            this.btnDKMH.TabIndex = 14;
+            this.btnDKMH.Text = "Thông tin DKMH\r\nvà học phí của SV";
+            this.btnDKMH.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnDKMH.UseVisualStyleBackColor = true;
+            this.btnDKMH.Click += new System.EventHandler(this.btnDKMH_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::StudentManagement.Properties.Resources.shudhangshu_malakar_education_school_logo;
+            this.pictureBox1.Location = new System.Drawing.Point(337, 14);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(5);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(123, 122);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 13;
+            this.pictureBox1.TabStop = false;
             // 
             // button5
             // 
@@ -102,30 +126,6 @@
             this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::StudentManagement.Properties.Resources.shudhangshu_malakar_education_school_logo;
-            this.pictureBox1.Location = new System.Drawing.Point(337, 14);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(5);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(123, 122);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 13;
-            this.pictureBox1.TabStop = false;
-            // 
-            // btnDKMH
-            // 
-            this.btnDKMH.BackgroundImage = global::StudentManagement.Properties.Resources.SubjectManagement;
-            this.btnDKMH.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnDKMH.Location = new System.Drawing.Point(558, 310);
-            this.btnDKMH.Name = "btnDKMH";
-            this.btnDKMH.Size = new System.Drawing.Size(230, 98);
-            this.btnDKMH.TabIndex = 14;
-            this.btnDKMH.Text = "Thông tin DKMH\r\nvà học phí của SV";
-            this.btnDKMH.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnDKMH.UseVisualStyleBackColor = true;
-            this.btnDKMH.Click += new System.EventHandler(this.btnDKMH_Click);
             // 
             // TrainingHomePage
             // 
