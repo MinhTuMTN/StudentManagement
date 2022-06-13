@@ -77,7 +77,7 @@ namespace StudentManagement.PresentationLayer.TrainingDepartment
                 string address = txtDiaChi.Text;
 
                 BussinessStudent bussiness = new BussinessStudent();
-                if (bussiness.InsertStudent(studentId, studentName, birthDate, sex, nation, address, yearOfAdmission, facultyId, studentClassId, ref error) > 0)
+                if (bussiness.InsertStudent(studentId, studentName, birthDate, sex, nation, address, yearOfAdmission, studentClassId, ref error) > 0)
                 {
                     MessageBox.Show("Thêm sinh viên thành công", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }

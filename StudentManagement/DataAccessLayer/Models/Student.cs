@@ -10,7 +10,6 @@ namespace StudentManagement.DataAccessLayer.Models
     {
         public Student()
         {
-            Subjects = new HashSet<Subject>();
             StudentSubjects = new HashSet<StudentSubject>();
         }
         public string StudentId { get; set; }
@@ -24,13 +23,9 @@ namespace StudentManagement.DataAccessLayer.Models
         public bool IsActive { get; set; }
 
 
-        public string FacultyId { get; set; }
-        public virtual Faculty Faculty { get; set; }
-
         public string StudentClassId { get; set; }
         public virtual StudentClass StudentClass { get; set; }
 
-        public virtual ICollection<Subject> Subjects { get; set; }
         public virtual ICollection<StudentSubject> StudentSubjects { get; set; }
     }
 }

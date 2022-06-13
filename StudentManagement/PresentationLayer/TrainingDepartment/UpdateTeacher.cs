@@ -72,7 +72,7 @@ namespace StudentManagement.PresentationLayer.TrainingDepartment
                 {
                     yearOfBirth = int.Parse(txtNamSinh.Text);
                 }
-                catch (Exception ex)
+                catch
                 {
                     lblYearOfBirthError.Text = "Nhập đúng định dạng năm (số nguyên)";
                     return;

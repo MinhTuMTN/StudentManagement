@@ -11,7 +11,6 @@ namespace StudentManagement.DataAccessLayer.Models
     {
         public Subject()
         {
-            Students = new HashSet<Student>();
             StudentSubjects = new HashSet<StudentSubject>();
         }
         public string SubjectId { get; set; }
@@ -22,7 +21,6 @@ namespace StudentManagement.DataAccessLayer.Models
         public string TeacherId { get; set; }
         public virtual Teacher Teacher { get; set; }
 
-        public virtual ICollection<Student> Students { get; set; }
         public virtual ICollection<StudentSubject> StudentSubjects { get; set; }
     }
 }

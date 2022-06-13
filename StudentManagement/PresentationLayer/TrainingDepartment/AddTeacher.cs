@@ -35,7 +35,7 @@ namespace StudentManagement.PresentationLayer.TrainingDepartment
                 {
                     teacherYearOfBirth = int.Parse(txtNamSinh.Text);
                 }
-                catch (Exception ex)
+                catch 
                 {
                     lblYearOfBirthError.Text = "Nhập đúng định dạng năm (số nguyên)";
                     return;

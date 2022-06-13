@@ -70,7 +70,7 @@ namespace StudentManagement.PresentationLayer.TrainingDepartment
                     lblTongSoTien.Text = hocPhi.ToString();
                     lblMSSV.Text = student.StudentId;
                     lblHoTen.Text = student.Name;
-                    lblKhoa.Text = student.Faculty.FacultyName;
+                    lblKhoa.Text = student.StudentClass.Faculty.FacultyName;
                     lblDiemTB.Text = student.GPA.ToString();
 
                     BussinessStudentSubject bussinessStudentSubject = new BussinessStudentSubject();

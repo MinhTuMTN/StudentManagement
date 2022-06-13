@@ -38,7 +38,7 @@ namespace StudentManagement.PresentationLayer.TrainingDepartment
                 {
                     numberOfCredits = int.Parse(txtSoTC.Text.Trim());
                 }
-                catch (Exception ex)
+                catch 
                 {
                     return;
                 }
@@ -62,8 +62,9 @@ namespace StudentManagement.PresentationLayer.TrainingDepartment
             {
                 using(var context = new Context())
                 {
-                    var teachers = (from teacher in context.Teachers
-                                    select teacher).ToList();
+                    var teachers = (from t in context.Teachers
+                                   where t.IsActive == true
+                                   select t).ToList();
 
                     cbTeacher.DataSource = teachers;
                     cbTeacher.ValueMember = "TeacherId";

@@ -15,8 +15,7 @@ namespace StudentManagement.DataAccessLayer.Maps
             Property(f => f.FacultyId).IsRequired().IsUnicode(false)
                 .HasMaxLength(10).IsFixedLength();
 
-            HasMany(f => f.Students).WithOptional(s => s.Faculty)
-                .HasForeignKey(s => s.FacultyId);
+            
             HasMany(f => f.StudentClasses).WithOptional(sc => sc.Faculty)
                 .HasForeignKey(sc => sc.FacultyId);
         }

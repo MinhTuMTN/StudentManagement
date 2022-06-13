@@ -12,7 +12,7 @@ namespace StudentManagement.BussinessLayer
 {
     public class BussinessStudent
     {
-        public int InsertStudent(string studentId, string studentName, DateTime birthDate, string sex, string nation, string address, int yearOfAdmission, string facultyId, string studentClassId, ref string error, bool isActived = true)
+        public int InsertStudent(string studentId, string studentName, DateTime birthDate, string sex, string nation, string address, int yearOfAdmission, string studentClassId, ref string error, bool isActived = true)
         {
             try
             {
@@ -28,7 +28,6 @@ namespace StudentManagement.BussinessLayer
                         Nation = nation,
                         Address = address,
                         YearOfAdmission = yearOfAdmission,
-                        FacultyId = facultyId,
                         StudentClassId = studentClassId,
                         IsActive = isActived,
                     };
@@ -38,7 +37,7 @@ namespace StudentManagement.BussinessLayer
             }
             catch (Exception ex)
             {
-                error = ex.Message;
+                error = ex.InnerException.Message;
             }
             return -1;
         }
@@ -63,24 +62,6 @@ namespace StudentManagement.BussinessLayer
             }
             return null;
         }
-        public List<Student> GetStudentsByFacultyId(string facultyId, ref string error)
-        {
-            try
-            {
-                using (var context = new Context())
-                {
-                    var students = from student in context.Students
-                                   where student.FacultyId == facultyId && student.IsActive == true
-                                   select student;
-                    return students.ToList();
-                }
-            }
-            catch (Exception e)
-            {
-                error = e.Message;
-            }
-            return null;
-        }
         public List<Student> GetStudentsByStudentClassId(string studentClassId, ref string error)
         {
             try
@@ -99,7 +80,7 @@ namespace StudentManagement.BussinessLayer
             }
             return null;
         }
-        public int UpdateStudent(string studentId, string studentName, DateTime birthDate, string sex, string nation, string address, int yearOfAdmission, string facultyId, string studentClassId, ref string error, bool isActived = true)
+        public int UpdateStudent(string studentId, string studentName, DateTime birthDate, string sex, string nation, string address, int yearOfAdmission, string studentClassId, ref string error, bool isActived = true)
         {
             try
             {
@@ -116,7 +97,6 @@ namespace StudentManagement.BussinessLayer
                         updateStudent.Nation = nation;
                         updateStudent.Address = address;
                         updateStudent.YearOfAdmission = yearOfAdmission;
-                        updateStudent.FacultyId = facultyId;
                         updateStudent.StudentClassId = studentClassId;
                         updateStudent.IsActive = isActived;
 

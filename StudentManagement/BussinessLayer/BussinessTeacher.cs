@@ -41,7 +41,7 @@ namespace StudentManagement.BussinessLayer
                 using(var context = new Context())
                 {
                     var teacherSelect = from teacher in context.Teachers
-                                        where teacher.TeacherId == teacherId && teacher.IsActive == true
+                                        where teacher.TeacherId == teacherId 
                                         select teacher;
                     return teacherSelect.FirstOrDefault();
                 }

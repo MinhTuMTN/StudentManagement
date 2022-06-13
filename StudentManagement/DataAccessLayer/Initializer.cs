@@ -76,7 +76,6 @@ namespace StudentManagement.DataAccessLayer
                 Address = "Tiền Giang",
                 Nation = "Kinh",
                 YearOfAdmission = 2020,
-                FacultyId = "FIT",
                 StudentClassId = "201102A",
                 IsActive = true
             };
@@ -89,7 +88,6 @@ namespace StudentManagement.DataAccessLayer
                 Address = "Lâm Đồng",
                 Nation = "Kinh",
                 YearOfAdmission = 2020,
-                FacultyId = "FIT",
                 StudentClassId = "201102A",
                 IsActive = true
             };
@@ -102,7 +100,6 @@ namespace StudentManagement.DataAccessLayer
                 Address = "Sóc Trăng",
                 Nation = "Kinh",
                 YearOfAdmission = 2020,
-                FacultyId = "FIT",
                 StudentClassId = "201103A",
                 IsActive = true
             };

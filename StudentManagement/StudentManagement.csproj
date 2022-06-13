@@ -62,6 +62,7 @@
     <Compile Include="BussinessLayer\BussinessStudentSubject.cs" />
     <Compile Include="BussinessLayer\BussinessSubject.cs" />
     <Compile Include="BussinessLayer\BussinessTeacher.cs" />
+    <Compile Include="BussinessLayer\BussinessUserLogin.cs" />
     <Compile Include="DataAccessLayer\Context.cs" />
     <Compile Include="DataAccessLayer\Initializer.cs" />
     <Compile Include="DataAccessLayer\Maps\FacultyMap.cs" />

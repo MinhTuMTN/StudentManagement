@@ -10,13 +10,11 @@ namespace StudentManagement.DataAccessLayer.Models
     {
         public Faculty()
         {
-            Students = new HashSet<Student>();
             StudentClasses = new HashSet<StudentClass>();
         }
         public string FacultyId { get; set; }
         public string FacultyName { get; set; }
 
-        public virtual ICollection<Student> Students { get; set; }
         public virtual ICollection<StudentClass> StudentClasses { get; set; }
     }
 }

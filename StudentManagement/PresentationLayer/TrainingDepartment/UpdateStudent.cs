@@ -24,7 +24,6 @@ namespace StudentManagement.PresentationLayer.TrainingDepartment
         private void btnSearchSV_Click(object sender, EventArgs e)
         {
             lblSearchResult.Text = "";
-            string error = "";
 
             string studentId = txtMaSVSearch.Text;
 
@@ -32,8 +31,7 @@ namespace StudentManagement.PresentationLayer.TrainingDepartment
             {
                 using (var context = new Context())
                 {
-                    BussinessStudent bussiness = new BussinessStudent();
-                    Student student = bussiness.GetStudentById(studentId, ref error);
+                    Student student = context.Students.Find(studentId);
 
                     if (student != null)
                     {
@@ -44,8 +42,8 @@ namespace StudentManagement.PresentationLayer.TrainingDepartment
                         txtDiaChi.Text = student.Address;
                         cbDanToc.Text = student.Nation;
                         txtNamNhapHoc.Text = student.YearOfAdmission.ToString();
-                        cbKhoa.SelectedValue = student.FacultyId;
-                        LoadStudentClass(student.FacultyId);
+                        cbKhoa.SelectedValue = student.StudentClass.Faculty.FacultyId;
+                        LoadStudentClass(student.StudentClass.Faculty.FacultyId);
                         cbLopSinhVien.Text = student.StudentClassId;
                     }
                     else
@@ -114,7 +112,7 @@ namespace StudentManagement.PresentationLayer.TrainingDepartment
                 string address = txtDiaChi.Text;
 
                 BussinessStudent bussiness = new BussinessStudent();
-                if (bussiness.UpdateStudent(studentId, studentName, birthDate, sex, nation, address, yearOfAdmission, facultyId, studentClassId, ref error) > 0)
+                if (bussiness.UpdateStudent(studentId, studentName, birthDate, sex, nation, address, yearOfAdmission, studentClassId, ref error) > 0)
                 {
                     MessageBox.Show("Cập nhật thông tin thành công", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
